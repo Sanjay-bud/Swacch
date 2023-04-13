@@ -1,0 +1,115 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SwachhScann{% endblock title %}</title>
+
+    <link rel="stylesheet" href="{% static 'form/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        .card-header {
+            background-color:#2B9D3E;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .card-heading {
+            margin-bottom: 20px;
+            
+        }
+        .card-title {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 20px;
+        }
+        .btn-primary {
+            background-color:#2B9D3E;
+            border-color:#2B9D3E;
+            color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color:#fff;
+            border-color: #2B9D3E;
+            color: #2B9D3E;
+            border-width: 3px;
+        }
+        footer {
+            color: #333;
+            text-align: center;
+            padding: 20px 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            max-height: 200px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin-top: 0;
+        }
+        p {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+        }
+
+        
+    </style>
+    
+
+</head>
+<body>
+    <!-- Main Content Start -->
+    <div class="container mt-5 mb-5">
+        <div class="col-xl-12">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- Header Start -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-heading">
+                        <h4 class="card-title">SWACHHSCANN</h4>
+                        
+                        <h4 class="card-title">{% block main-title %}{% endblock main-title %}</h4>
+                        </div>
+                    </div>
+                    {% if messages %}
+                        <div class="alert alert-success" role="alert">
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {% block message-content %}
+                        {% endblock message-content %}
+            
+                    {% endif %}
+
+                    <div class="card-body">
+                      
+                      {% block content %}{% endblock content %}
+                      
+                    </div>
+                </div>
+                <!-- Header End -->
+            </form>
+            
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="container">
+        <p><center>A initiative by Avira Foundation</center></p>
+    </div>
+</footer>
+
+</html>

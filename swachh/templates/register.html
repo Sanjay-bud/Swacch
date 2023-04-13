@@ -1,0 +1,79 @@
+{% extends 'base.html'%}
+
+{% load widget_tweaks %}
+
+{% block main-title %}REGISTRATION FORM{% endblock main-title %}
+
+{% block message-content %}
+
+{% endblock message-content %}
+
+{% block content %}
+
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="form-group col-md-4  ">
+        <label class="control-label fs-6 w-100"> Name<span class="required">*</span></label>
+        {% if form.name.errors|striptags %}
+            {% comment %} {{ form.jpso|attr:"required:true"|attr:"class:form-select" }} {% endcomment %}
+            
+        {{ form.name|attr:"required:true"|attr:"class:form-select is-invalid" }}
+        <div class="invalid-feedback">
+            {{form.name.errors|striptags}}
+        </div>
+        {% else %}
+        {{ form.name|attr:"required:true"|attr:"class:form-select" }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group col-md-4">
+        <label class="control-label fs-6 w-100">Mobile Number<span class="required">*</span></label>
+        {% if form.phn_num.errors|striptags %}
+            {% comment %} {{ form.jpso|attr:"required:true"|attr:"class:form-select" }} {% endcomment %}
+            
+        {{ form.phn_num|attr:"required:true"|attr:"class:form-select is-invalid" }}
+        <div class="invalid-feedback">
+            {{form.phn_num.errors|striptags}}
+        </div>
+        {% else %}
+        {{ form.phn_num|attr:"required:true"|attr:"class:form-select" }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group col-md-4">
+        <label class="control-label fs-6 w-100">Address<span class="required">*</span></label>
+        {% if form.adr.errors|striptags %}
+            {% comment %} {{ form.jpso|attr:"required:true"|attr:"class:form-select" }} {% endcomment %}
+            
+        {{ form.adr|attr:"required:true"|attr:"class:form-select is-invalid" }}
+        <div class="invalid-feedback">
+            {{form.adr.errors|striptags}}
+        </div>
+        {% else %}
+        {{ form.adr|attr:"required:true"|attr:"class:form-select" }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group col-md-4">
+        <label class="control-label fs-6 w-100">Family Members<span class="required">*</span></label>
+        {% if form.mem_count.errors|striptags %}
+            {% comment %} {{ form.jpso|attr:"required:true"|attr:"class:form-select" }} {% endcomment %}
+            
+        {{ form.mem_count|attr:"required:true"|attr:"class:form-select is-invalid" }}
+        <div class="invalid-feedback">
+            {{form.mem_count.errors|striptags}}
+        </div>
+        {% else %}
+        {{ form.mem_count|attr:"required:true"|attr:"class:form-select" }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center p-20">
+    <button class="btn btn-primary me-md-2 p-10" type="submit" onclick="submitForm()">Save</button>
+  </div>
+{%endblock%}
